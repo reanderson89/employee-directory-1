@@ -1,25 +1,15 @@
 import React from "react";
-
-const EmployeeRow = () => {
+// employee information that will be displayed in a row on the table
+const EmployeeRow = (props) => {
   return (
-    <>
-      <thead>
-        <tr>
-          <th scope="col">Image</th>
-          <th scope="col">Name</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Email</th>
-          <th scope="col">DOB</th>
-        </tr>
-      </thead>
-      <tbody>
-          <td>img here</td>
-          <td>name here</td>
-          <td>phone number here</td>
-          <td>email here</td>
-          <td> DOB here</td>
-      </tbody>
-    </>
+    <tr>
+      <th scope="row">
+        <img alt="Employee Head-shot" src={props.picture}/>
+      </th>
+      <td>{props.name.first}  {props.name.last}</td>
+      <td>{props.phone}</td>
+      <td>{props.email}</td>
+    </tr>
   );
 };
 
