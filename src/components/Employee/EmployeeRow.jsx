@@ -4,7 +4,7 @@ const EmployeeRow = (props) => {
   return (
     <tr>
       <th scope="row">
-        <img alt="Employee Head-shot" src={props.picture}/>
+        <img alt="Employee Headshot" src={props.picture.thumbnail}/>
       </th>
       <td>{props.name.first}  {props.name.last}</td>
       <td>{props.phone}</td>
