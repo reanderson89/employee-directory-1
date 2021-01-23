@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        "https://randomuser.me/api/?results=10&inc=login,name,phone,email,picture,dob&nat=us"
+        "https://randomuser.me/api/?results=20&inc=login,name,phone,email,picture,dob&nat=us"
       )
       .then((response) => {
         console.log(response.data);
