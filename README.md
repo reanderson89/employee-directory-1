@@ -29,7 +29,7 @@ Fork repository at [gstephbolivar github](https://github.com/gstephbolivar/emplo
 
 ## Usage
 
-This [application](https://gstephbolivar.github.io/employee-directory/#/) allows for a user 
+This [application](https://gstephbolivar.github.io/employee-directory/#/) allows for a user to search and sort through their employee directory. The user can sort by alphabetical order in ascending or descending order the name of the employees. The user can use the search bar to filter by name, email, phone number, and date of birth. 
 
 ## Contributing
 
