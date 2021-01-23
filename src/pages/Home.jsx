@@ -6,17 +6,20 @@ import SearchBar from "../components/SearchBar/SearchBar";
 const Home = () => {
   // setting state
   const [employees, setEmployees] = useState([]);
-  const [sortOrder, setSortOrder] = useState('');
+  const [sortOrder, setSortOrder] = useState("");
+//   const [searchTerm, setSearchTerm] = useState("");
+  const [viewEmployees, setViewEmployees] = useState([]);
 
   //   Initial employee render
   useEffect(() => {
     axios
       .get(
-        "https://randomuser.me/api/?results=10&inc=login,name,phone,email,picture&nat=us"
+        "https://randomuser.me/api/?results=10&inc=login,name,phone,email,picture,dob&nat=us"
       )
       .then((response) => {
         console.log(response.data);
         setEmployees(response.data.results);
+        setViewEmployees(response.data.results);
       })
       .catch((err) => {
         console.log(err);
@@ -39,7 +42,22 @@ const Home = () => {
       setSortOrder("ascending");
     }
     console.log(sortedEmployees);
-    setEmployees(sortedEmployees);
+    setViewEmployees([...sortedEmployees]);
+  };
+
+  const filterResults = (e) => {
+    const value = e.target.value;
+
+    if (value==="") {
+        setViewEmployees(employees);
+        return;
+    }
+
+    const results = [...employees].filter((employee)=>{
+        return (employee.name.first.includes(value) || employee.name.last.includes(value) || employee.phone.includes(value));
+    })
+
+    setViewEmployees(results);
   };
 
   //   return a table with employees information
@@ -52,7 +70,7 @@ const Home = () => {
       </div>
       <div className="row">
         <div className="col-sm-3">
-          <SearchBar />
+          <SearchBar onChange={filterResults} />
         </div>
       </div>
       <div className="row">
@@ -60,18 +78,22 @@ const Home = () => {
           <thead>
             <tr>
               <th scope="col">Image</th>
-              <th scope="col" onClick={sortBy}>Name</th>
+              <th scope="col" onClick={sortBy}>
+                Name
+              </th>
               <th scope="col">Phone</th>
               <th scope="col">Email</th>
+              <th scope="col">DOB</th>
             </tr>
           </thead>
           <tbody>
-            {employees.map((employee) => (
+            {viewEmployees.map((employee) => (
               <EmployeeRow
                 name={employee.name}
                 phone={employee.phone}
                 email={employee.email}
                 picture={employee.picture}
+                dob={employee.dob}
               />
             ))}
           </tbody>

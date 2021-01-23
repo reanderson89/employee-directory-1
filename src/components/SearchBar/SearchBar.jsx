@@ -1,7 +1,7 @@
 import React from "react";
 import "./SearchBar.css";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   return (
     //   TODO: center search input
     <div className="create-form">
@@ -11,6 +11,7 @@ const SearchBar = () => {
           className="form-control"
           placeholder="Search Employee"
           aria-label="Search Employee"
+          onChange={props.onChange}
         ></input>
       </div>
     </div>
@@ -18,3 +19,4 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+                                                                                                                                                                                         
