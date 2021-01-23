@@ -1,14 +1,14 @@
 import React from "react";
-import "./SearchBar.css";
+
 
 const SearchBar = (props) => {
   return (
-    //   TODO: center search input
-    <div className="create-form">
-      <div className="input-group mb-3">
+    //   search bar to filter employees
+    <div className="create-form" style={{textAlign: "center"}}>
+      <div className="input-group">
         <input
           type="text"
-          className="form-control"
+          className="form-control mb-3 mt-3"
           placeholder="Search Employee"
           aria-label="Search Employee"
           onChange={props.onChange}
